@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		  html{overflow-y: hidden;}
+    a{color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */}
+    body{background: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0,0, 0.7)),url('pluie.jpg');background-repeat: no-repeat;background-size: cover ;color: powderblue;font-family: sans-serif;font-size: 18px;height: 100vh;overflow-y: auto;}
+th{
+	text-align: left;
+	min-width: 14vw;
+}
+input{
+	 caret-color: powderblue;overflow-y: auto;width: 15vw;outline: none;border: none; background: linear-gradient(transparent,rgba(0, 60, 145, 0.4));color: #b89f16;font-size:16px;border-bottom: 3px solid powderblue;
+}
+input[type=submit]{background: transparent;outline: none;color: #b89f16;border: none;padding: 5%;font-weight: bold;cursor: pointer;
+
+}
+#aver{
+			
+			font-family: sans-serif;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			margin: 0;
+		}
+		.semi{
+			width: 100px;
+			height: 50px;
+			
+			position: relative;
+			color: darkorange;
+			font-weight: bold;
+			font-size: 16px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			box-sizing: border-box;
+			overflow: hidden;
+			--percentage: 0;
+			--fill: darkorange;
+
+		}
+		.semi:after{
+			content: '';
+			box-sizing: border-box;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100px;
+			height: 100px;
+			border: 20px solid; 
+			border-color: #0d264a #0d264a var(--fill) var(--fill);
+			border-radius: 50%;
+			transform: rotate(calc(1deg*(-45 + var(--percentage)*1.8)));
+			animation: fill 1s ease-out;
+			}
+
+		@keyframes fill{
+		0%{transform: rotate(-45deg)}
+		
+
+		}
+	</style>
+	<meta charset="utf-8">
+	<title>Valjean💫</title>
+</head>
+<body>
+
+	<center>
+	<h4>✨Étoile Workshop✨</h4>
+	<form action="/vuelta" method="POST" id="vuelta">
+
+		<select id="vuelta" name="vuelta"  style="caret-color: powderblue;overflow-y: auto;width: 30vw;outline: none;border: none; background: linear-gradient(transparent,rgba(0, 60, 145, 0.4));color: #b89f16;font-size:16px;border-bottom: 3px solid powderblue;">
+			<option disabled selected>Seleccione elemento a ponderar</option>
+		<% head.forEach((head)=>{ %><option value="<%= head.column_name %>"><%= head.column_name %></option><% }) %>
+		</select>
+		<input type="submit">
+	</form>
+	</center>
+
+
+	<div id="aver">
+	
+	<% topf.forEach((topp)=>{ %>
+
+			<div style="position: relative;padding: 3%;">
+						<div class="semi" style="--percentage: calc(<%= topp.count %>/<%= maxx %>)*100"><div class="counter" data-target='<%= topp.count %>'></div></div>
+						<br>
+						<div style="text-align: center;"><%= topp.elemento %></div>
+			</div>
+
+			<% }) %>
+
+</div>
+
+
+<center style="padding-bottom: 15%;">
+
+	<div style="width: 80vw">
+		<div style="float:left;text-align: left;width: 50%;">
+<h1>Productos</h1><br><br>
+<h2><a href="/create">Ingresar nueva fila</a></h2><br><br><br>
+</div>
+
+
+
+<div style="float:right;text-align: right;width: 50%;">
+	
+<form action="/bonjour" method="POST">
+	<h4>Agregar nueva columna:</h4>
+	<input type="submit" value="Agregar" style="cursor: pointer;">
+	<input id="nueva" name="nueva" placeholder="Nombre nueva columna" autocomplete="off">
+	
+</form>
+<form action="/aurevoir" method="POST">
+	<h4>Eliminar columna (<span style="color:darkorange;">Precaución</span>: tenga en cuenta que eliminará la información dentro de ella y no podrá ser recuperada):</h4>
+	<input type="submit" value="Eliminar" style="cursor: pointer;">
+	<select id="seva" name="seva"  style="caret-color: powderblue;overflow-y: auto;width: 15vw;outline: none;border: none; background: linear-gradient(transparent,rgba(0, 60, 145, 0.4));color: #b89f16;font-size:16px;border-bottom: 3px solid powderblue;">
+		<option disabled selected>Seleccione columna</option>
+		<% head.forEach((head)=>{ %><option value="<%= head.column_name %>"><%= head.column_name %></option><% }) %>
+		
+		</select>
+	
+</form>
+
+</div>
+
+
+
+</div>
+
+<div class="container" style="width: 80vw;height: 50vh;overflow-y: auto;">
+
+
+<table>
+<thead>
+<tr>
+<% head.forEach((head)=>{ %><th><%= head.column_name %></th><% }) %>
+<th>Editar</th>
+<th>Borrar</th>
+</tr>
+</thead>
+<tbody>
+
+
+
+
+
+<% results.forEach((user)=>{ %>
+
+<tr>
+
+
+<% head.forEach((head)=>{ %>
+
+<td><%= user[head.column_name] %></td><% }) %>
+
+
+
+<td>
+	<a href="/edit/<%= user.id %>">💫</a>
+</td>
+
+<td>
+	<a href="/delete/<%= user.id %>">🚀</a>
+</td>
+</tr>
+
+<% }) %>
+
+</tbody>
+</table>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+	<h2>Consultar tabla de referencias cruzadas de SQL Server: </h2>
+	<h4>Ingrese datos a referenciar de manera que se genere una tabla de visualización <br><span style="color:#b89f16">Recuerde que para que la consulta pueda ser efectuada se requiere valores distintos en todos los campos</span></h4>
+	<form action="/consulta" method="POST" id="consulta">
+		<select id="columna" name="columna"  style="caret-color: powderblue;overflow-y: auto;width: 15vw;outline: none;border: none; background: linear-gradient(transparent,rgba(0, 60, 145, 0.4));color: #b89f16;font-size:16px;border-bottom: 3px solid powderblue;">
+			<option disabled selected>Seleccione columna</option>
+		<% head.forEach((head)=>{ %><option value="<%= head.column_name %>"><%= head.column_name %></option><% }) %>
+		
+		</select>
+		<select id="pivot" name="pivot"  style="caret-color: powderblue;overflow-y: auto;width: 15vw;outline: none;border: none; background: linear-gradient(transparent,rgba(0, 60, 145, 0.4));color: #b89f16;font-size:16px;border-bottom: 3px solid powderblue;">
+			<option disabled selected>Seleccione pivot</option>
+		<% head.forEach((head)=>{ %><option value="<%= head.column_name %>"><%= head.column_name %></option><% }) %>
+		
+		</select>
+		<select id="count" name="count"  style="caret-color: powderblue;overflow-y: auto;width: 15vw;outline: none;border: none; background: linear-gradient(transparent,rgba(0, 60, 145, 0.4));color: #b89f16;font-size:16px;border-bottom: 3px solid powderblue;">
+			<option disabled selected>Seleccione dato a contabilizar</option>
+		<% head.forEach((head)=>{ %><option value="<%= head.column_name %>"><%= head.column_name %></option><% }) %>
+		<input type="submit">
+		
+		</select>
+	</form>	
+<br><br><br><br><br>
+
+
+
+<br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+	<div style="width: 80vw">
+		<div style="float:left;">
+			<img src="voilalejean.jpg" width="400" height="200">
+		</div>
+	<div style="float: right;text-align: right;">
+		<h4>Valjean</h4><br><br>
+		<h4>✨Étoile Workshop✨</h4>
+	</div>
+</div>
+</footer>
+
+
+
+</center>
+	<script>
+	const counters=document.querySelectorAll('.counter')
+
+
+const speed=400
+
+var a=0
+
+counters.forEach(counter=>{
+	const updateCount=()=>{
+		const target=+counter.getAttribute('data-target')
+		const count=+a
+
+		const counts=+count
+
+		const inc=target/speed
+
+		if(counts<target){
+			a=counts+inc
+			
+			counter.innerText=Math.trunc(a);
+			setTimeout(updateCount,2)
+		}else{
+			counter.innerText=target
+		}
+	}
+	updateCount()
+})</script>
+</body>
+</html>
+
+
+
+<!-- declare @columnas as nvarchar(max)
+declare @sql as nvarchar(max)=''
+
+
+
+select @columnas = STUFF((SELECT distinct ',' +
+                        QUOTENAME(tipo)
+                      FROM productos
+                      FOR XML PATH(''), TYPE
+                     ).value('.', 'NVARCHAR(MAX)') 
+                        , 1, 1, '');
+
+
+
+
+
+set @sql='
+select region,'+@columnas+' from
+
+(select region,
+tipo,
+producto from dbo.productos
+) as src
+pivot
+(count(producto) for tipo in ('+@columnas+')
+) as pvt'
+
+execute sp_executesql @sql
+
+ -->

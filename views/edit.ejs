@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		  html{overflow-y: hidden;}
+    a{text-decoration: none;color: #b89f16;}
+    body{background: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0,0, 0.7)),url('/pluie.jpg');background-repeat: no-repeat;background-size: cover ;color: powderblue;font-family: sans-serif;font-size: 18px;height: 100vh;overflow-y: auto;}
+    input[type=submit]{background: transparent;outline: none;color: inherit;border: none;font-weight: bold;font-size: inherit;
+
+}
+	</style>
+	<meta charset="utf-8">
+	<title>Bonjour</title>
+</head>
+<body>
+	<center>
+		<h4>✨Étoile Workshop✨</h4>
+<h1>Editar</h1>
+		
+
+		
+		
+	<form action="/update" method="POST"><input id="id" name="id" value="<%= elemento[0][1] %>" hidden>
+		<table style="padding-bottom: 20%;">
+			<% for(var i=1; i < elemento.length; i++){ %>
+		<tr>
+			<td style="min-width: 15vw;">
+				<h2><%= elemento[i][0] %>:</h2>
+			</td>
+			<td style="min-width: 20vw">
+				<input type="text" id="<%= elemento[i][0] %>" name="<%= elemento[i][0] %>" value="<%= elemento[i][1] %>" type="text" id="region" name="region" style="caret-color: powderblue;overflow-y: auto;width: 30vw;height: 5vh;outline: none;border: none; background: linear-gradient(transparent,rgba(0, 60, 145, 0.4));color: powderblue;font-size:20px;border-bottom: 3px solid powderblue;">
+			</td>
+		</tr>
+		<% } %>
+		<tr>
+			<td style="min-width: 15vw;padding-top: 10%;">
+				<a href="/">Cancelar</a>
+			</td>
+
+
+			<td style="min-width: 20vw;padding-top: 10%;">
+					<input type="submit" value="Guardar">
+			</td>
+		</tr>
+		
+		
+		
+		
+		
+		
+		
+		<br><br>
+		
+		
+	
+		
+		</table>
+		
+	
+	</form>
+
+	<footer>
+	<div style="width: 80vw">
+		<div style="float:left;">
+			<img src="/voilalejean.jpg" width="400" height="200">
+		</div>
+	<div style="float: right;text-align: right;">
+		<h4>Valjean</h4><br><br>
+		<h4>✨Étoile Workshop✨</h4>
+	</div>
+</div>
+</footer>
+
+</center>
+
+</body>
+</html>
